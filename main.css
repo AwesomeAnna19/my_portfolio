@@ -1,0 +1,127 @@
+body {
+    background-color: rgb(255, 254, 248);
+    font-family: Verdana, sans-serif;
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.block-title {
+    background-color: rgb(255, 224, 85);
+    padding: 10px;
+    max-height: 50px;
+}
+
+.block {
+    margin: 10%;
+    padding: 10px;
+    border: 5px solid rgb(255, 224, 85);
+    background-color: rgb(255, 236, 152);
+}
+
+.buttons-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 50px;
+    margin: 0px;
+    gap: 120px;
+}
+
+.buttons-list button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 10px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.buttons-list button:hover {
+    background: rgba(138, 138, 138, 0.2);
+    transform: scale(1.1);
+}
+
+.buttons-list button.active {
+    background: rgba(138, 138, 138, 0.4);
+}
+
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.window-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 254, 248);
+    overflow: hidden;
+}
+
+.window-style {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 300px;
+    height: 200px;
+    border: 2px solid rgb(255, 224, 85);
+    background-color: rgb(255, 236, 152);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(138, 138, 138);
+    padding: 8px 12px;
+    cursor: grab;
+    border-bottom: 2px solid rgb(53, 53, 53);
+    user-select: none;
+}
+
+.window-header:active {
+    cursor: grabbing;
+}
+
+.window-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 16px;
+    font-size: 14px;
+}
+
+.button-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgb(138, 138, 138);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 16px;
+    border: 1px solid rgb(53, 53, 53);
+}
