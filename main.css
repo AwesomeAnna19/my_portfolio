@@ -1,10 +1,12 @@
 body {
     background-color: rgb(255, 254, 248);
     font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -12,14 +14,15 @@ body {
 .block-title {
     background-color: rgb(255, 224, 85);
     padding: 10px;
-    max-height: 50px;
+    border-radius: 25px;
 }
 
 .block {
-    margin: 10%;
-    padding: 10px;
+    margin: 5% 10%;
+    padding: 20px;
     border: 5px solid rgb(255, 224, 85);
     background-color: rgb(255, 236, 152);
+    border-radius: 50px;
 }
 
 .buttons-list {
@@ -27,9 +30,10 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 50px;
+    align-items: center;
+    padding: 50px 20px;
     margin: 0px;
-    gap: 120px;
+    gap: 100px;
 }
 
 .buttons-list button {
@@ -39,6 +43,9 @@ body {
     padding: 8px;
     border-radius: 10px;
     transition: transform 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .buttons-list button:hover {
@@ -47,7 +54,9 @@ body {
 }
 
 .buttons-list button.active {
-    background: rgba(138, 138, 138, 0.4);
+    background: rgba(138, 138, 138, 0.2);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    transform: scale(1.1);
 }
 
 .button {
@@ -65,28 +74,28 @@ body {
 .window-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: rgb(255, 254, 248);
     overflow: hidden;
 }
 
 .window-style {
     position: absolute;
-    top: 100px;
-    left: 100px;
-    width: 300px;
-    height: 200px;
+    top: 120px;
+    left: 120px;
+    width: 320px;
+    min-height: 180px;
     border: 2px solid rgb(255, 224, 85);
     background-color: rgb(255, 236, 152);
-    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    box-shadow: 4px 4px 0px rgba(138, 138, 138, 0.5);
+    border-radius: 6px;
 }
 
 .window-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(138, 138, 138);
+    background-color: rgb(255, 224, 85);
     padding: 8px 12px;
     cursor: grab;
     border-bottom: 2px solid rgb(53, 53, 53);
@@ -107,6 +116,13 @@ body {
     border: none;
     font-weight: bold;
     cursor: pointer;
+    font-size: 14px;
+    padding: 2px 6px;
+}
+
+.close-button:hover {
+    background-color: rgba(138, 138, 138, 0.2);
+    border-radius: 4px;
 }
 
 .window-content {
@@ -114,7 +130,7 @@ body {
     font-size: 14px;
 }
 
-.button-nav {
+/* .button-nav {
     position: fixed;
     bottom: 20px;
     left: 50%;
@@ -124,4 +140,4 @@ body {
     padding: 10px 20px;
     border-radius: 16px;
     border: 1px solid rgb(53, 53, 53);
-}
+} */

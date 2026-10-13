@@ -1,16 +1,63 @@
-import React, { useState } from 'react';
-import Draggable from 'react-draggable';
-import './main.css';
+const { useState } = React;
+const Draggable = window.ReactDraggable;
+
+function AboutMeContent() {
+    return (
+        <div>
+            <p>Howdy, I'm Anna Rosé!</p>
+            <p>I'm a 22 year old frontend developer, UI/UX designer, 2D artist & animator, 3D modeler, and game designer, who is especially passionate about creating user-friendly websites and fun animations.</p>
+            <p>As a new Medialogy graduate, I offer a "Swiss Army Knife" profile with a broad range of skills. 
+                I cover everything from programming and code reviewing, designing (UI), 
+                conducting user evaluations (UX) and quality assurance (QA), game-development, 
+                and 3D-modeling, always with the user in mind. Coupled with a flexible mindset, 
+                I pick up new technologies quickly.</p>
+        </div>
+    );
+}
+
+function WorkContent() {
+    return (
+        <div>
+            <p>A little view of my CV and such.</p>
+        </div>
+    );
+}
+
+function ProjectsContent() {
+    return (
+        <div>
+            <p>Here is a quick review of the different projects I've worked on.</p>
+        </div>
+    );
+}
+
+function LinksContent() {
+    return (
+        <div>
+            <p>Different links to my so-to-say "socials":</p>
+            <p><b>GitHub:</b> <a href="https://github.com/AwesomeAnna19">https://github.com/AwesomeAnna19</a></p>
+            <p><b>Instagram (art profile):</b> <a href="https://www.instagram.com/apb.editz/">https://www.instagram.com/apb.editz/</a></p>
+        </div>
+    );
+}
+
+function ContactContent() {
+    return (
+        <div>
+            
+        </div>
+    );
+}
 
 const WINDOWS_DATA = [
-    { id: 'about', title: 'About', icon: 'icons/info.png', content: 'Hi!' },
-    { id: 'work', title: 'Work', icon: 'icons/briefcase.png', content: 'Hey!' },
-    { id: 'projects', title: 'Projects', icon: 'icons/folder.png', content: 'Hyellow!' },
-    { id: 'links', title: 'Links', icon: 'icons/link-alt.png', content: 'Howdy!' },
-    { id: 'contact', title: 'Contact', icon: 'icons/paper-plane.png', content: 'Hello!' },
+    { id: 'about', title: 'A Little About Me', icon: 'icons/info.png', content: <AboutMeContent /> },
+    { id: 'work', title: 'Work Stuff', icon: 'icons/briefcase.png', content: <WorkContent /> },
+    { id: 'projects', title: 'My Projects', icon: 'icons/folder.png', content: <ProjectsContent /> },
+    { id: 'links', title: 'Links', icon: 'icons/link-alt.png', content: <LinksContent /> },
+    { id: 'contact', title: 'Contact Me!', icon: 'icons/paper-plane.png', content: <ContactContent /> },
 ];
 
-export default function App() {
+function App() {
     const [openWindows, setOpenWindows] = useState({});
     const [zIndexLayers, setZIndexLayers] = useState({
         about: 1,
@@ -50,8 +97,33 @@ export default function App() {
 
     return (
         <div className="window-container">
-            {WINDOWS_DATA.map((window) => {
-                if (!openWindows[window.id]) return null;
+            <h1>🤠</h1>
+
+            <div class="container">
+                <div class="block">
+                    <div class="block-title">
+                        <h2>Welcome to Anna's Bench of Work!</h2>
+                    </div>
+                    
+                    <p>Howdy! I'm Anna Rosé, and welcome to my bench of work (or should I rather say, my portfolio)!</p>
+
+                <div>
+                    <ul class="buttons-list">
+
+                        {WINDOWS_DATA.map((window) => (
+                            <li key={window.id}>
+                                <button type="button" className={`button ${openWindows[window.id] ? 'active' : ''}`} aria-label={window.title} onClick={() => toggleWindow(window.id)}>
+                                    <img src={window.icon} alt={window.title} />
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+            
+        {WINDOWS_DATA.map((window) => {
+            if (!openWindows[window.id]) return null;
 
             return (
                 <Draggable key={window.id} handle=".window-header" bounds="parent">
@@ -62,24 +134,16 @@ export default function App() {
                         </div>
 
                         <div className="window-content">
-                            <p>{window.content}</p>
+                            {window.content}
                         </div>
                     </div>
                 </Draggable>
             );
         })}
-
-    <nav className="button-nav">
-        <ul className="buttons-list">
-            {WINDOWS_DATA.map((item) => (
-                <li key={item.id}>
-                    <button type="button" aria-label={item.title} className={`button ${openWindows[item.id] ? 'active' : ''}`} onClick={() => toggleWindow(item.id)}>
-                        <img src={item.icon} alt={item.title} />
-                    </button>
-                </li>
-            ))}
-        </ul>
-    </nav>
-</div>
-);
+    </div>
+    );
 }
+
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
